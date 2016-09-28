@@ -111,6 +111,8 @@ class Bot():
 
             # Check and see if there's a submission for this thread already
             permalink = "http://www.reddit.com/message/messages/"+modmail.id
+            permalink_2 = "https://www.reddit.com/message/messages/" + modmail.id
+
             query = "self:yes selftext:"+permalink
 
             for submission in r.search(query, subreddit=archive_subreddit,sort='new'):
@@ -118,7 +120,7 @@ class Bot():
                 # Make sure search result isn't a false positive due to one thread being linked in another
                 # since message permalink is first thing in archive text, this works
 
-                if not submission.selftext.startswith(permalink):
+                if not submission.selftext.startswith(permalink) and not submission.selftext.startswith(permalink_2):
                     continue
 
                 # Check to see if nothing has changed, and if so, stop (because we're out of modmails to do since last cycle)
