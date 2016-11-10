@@ -5,5 +5,8 @@
       "username":"",
       "password":"",
       "archive_subreddit":""
+   },
+   "bot": {
+      "sleep" : 300
    }
 }

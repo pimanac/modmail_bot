@@ -155,7 +155,9 @@ if __name__=='__main__':
         try:
             modbot.oauth_login()
             modbot.archive_modmail()
-            break
+            print("Sleeping...")
+            time.sleep(config['bot']['sleep'])
+#            break
         except HttpError:
             print("HTTP error occured, retrying in 20 seconds")
             time.sleep(20)
