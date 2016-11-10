@@ -15,13 +15,16 @@ from configparser import ConfigParser
 # state="Modmail Archivist"
 # refresh_token=os.environ.get('refresh_token')
 
-config = ConfigParser()
-config.read('mmb_config.ini')
 
-owner      = config.get('reddit', 'owner')
-version    = config.get('reddit', 'version')
-username   = config.get('reddit', 'username')
-password   = config.get('reddit', 'password')
+with open('config.json','r') as f:
+    config = json.load(f)
+
+
+
+owner      = config['reddit']['owner']
+version    = config['reddit']['version']
+username   = config['reddit']['username']
+password   = config['reddit']['password']
 user_agent = username + ' by ' + owner + ' version ' + version
 
 r = praw.Reddit(user_agent)
@@ -79,7 +82,7 @@ class Bot():
             # Get the corresponding archive subreddit - if there isn't one then skip modmail
             # This is necessary to prevent it spending time trying to archive modmail in archive subreddits
 
-            archive_subreddit = "ar_modmail"
+            archive_subreddit = config['reddit']['archive_subreddit'] 
 
             i+=1
             # Begin assembling text, starting with permalink

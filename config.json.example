@@ -1,7 +1,9 @@
-"reddit": {
-	"owner":"",
-	"version":"",
-	"user":"",
-	"password":""
-	"archiveSubreddit":""
+{
+   "reddit": {
+      "owner":"",
+      "version":"0",
+      "username":"",
+      "password":"",
+      "archive_subreddit":""
+   }
 }
